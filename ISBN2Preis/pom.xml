@@ -17,7 +17,7 @@
     <artifactId>isbn2preis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     
-    <name>ISBN-zu-Preis</name>
+    <name>ISBN13-zu-Preis</name>
     <description>REST-API zur Preisabfrage von Büchern anhand ISBN-13</description>
     
     <properties>
