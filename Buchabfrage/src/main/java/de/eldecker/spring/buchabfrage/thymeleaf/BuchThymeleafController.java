@@ -2,6 +2,9 @@ package de.eldecker.spring.buchabfrage.thymeleaf;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,8 @@ import de.eldecker.spring.buchabfrage.logik.PreisAbfrageClient;
 @Controller
 public class BuchThymeleafController {
 
+	private static Logger LOG = LoggerFactory.getLogger( BuchThymeleafController.class );
+	
 	/**
 	 * Client mit Load Balancing, um bei anderem Microservice
 	 * Preis von Buch abzufragen.
@@ -40,12 +45,13 @@ public class BuchThymeleafController {
 	 * @param model Objekt für Platzhalterwerte in Template-Datei
 	 *
 	 * @return Name der Template-Datei, die für Anzeige verwendet
-	 *         werden soll, z.B. "ergebnis" für "ergebnis.html"
-	 */
-    @GetMapping( "buch/{isbn13}" )
-    public String zeigeBuch( @PathVariable String isbn13,
-                             Model model ) {
-
+	 *         werden soll (ohne Datei-Endung)
+	 */         
+    @GetMapping( "/buch" )
+    public String zeigeBuch( Model model ) {
+    	
+    	LOG.info( "Controller-Methode für Buch-Abfrage aufgerufen." );
+                             
     	/*
     	model.addAttribute( "isbn", "12343" );
     	model.addAttribute( "preis", "12.34");
@@ -57,7 +63,7 @@ public class BuchThymeleafController {
     			                       ()    -> model.addAttribute( "preis", ""    )
     			                     );
     	*/
-    	return "buchdetails";
+    	return "ergebnis";
     }
 
 }
