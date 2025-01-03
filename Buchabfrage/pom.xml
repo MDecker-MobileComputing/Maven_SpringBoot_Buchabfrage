@@ -20,6 +20,13 @@
     <name>Buchabfrage</name>
     <description>Buchabfrage anhand ISBN13</description>
     
+    <licenses>
+      <license>
+        <name>BSD 3-Clause License</name>
+        <url>https://opensource.org/license/BSD-3-clause/</url>
+      </license>
+    </licenses>    
+    
     <properties>
         <java.version>23</java.version>
         <spring-cloud.version>2024.0.0</spring-cloud.version>
