@@ -19,16 +19,16 @@ import de.eldecker.spring.buchabfrage.restclient.PreisAbfrageClient;
  */
 @Controller
 public class ThymeleafController {
-	
+
 	private static Logger LOG = LoggerFactory.getLogger( ThymeleafController.class );
-	 	
+
 	/**
-	 * Client um Buchpreis von REST-API mit Load Balancing abzufragen. 
+	 * Client um Buchpreis von REST-API mit Load Balancing abzufragen.
 	 */
 	@Autowired
 	private PreisAbfrageClient _preisAbfrageClient;
-	
-	
+
+
 	/**
 	 * Seite mit Details zu einem Buch anzeigen.
 	 * <br><br>
@@ -40,28 +40,28 @@ public class ThymeleafController {
 	 *
 	 * @param isbn13 ISBN von Buch, für die Details abgefragt
 	 *               werden sollen; als {@code long}-Variable,
-	 *               damit keine Bindestriche enthalten sein 
+	 *               damit keine Bindestriche enthalten sein
 	 *               können.
 	 *
 	 * @param model Objekt für Platzhalterwerte in Template-Datei
 	 *
 	 * @return Name der Template-Datei, die für Anzeige verwendet
 	 *         werden soll (ohne Datei-Endung)
-	 */         	
+	 */
     @GetMapping( "/buch/{isbn13}" )
     public String buchanfrage( @PathVariable long isbn13,
                                Model model ) {
-    	    	
+
     	LOG.info( "Anfrage für Buch mit ISBN13={} erhalten.", isbn13 );
-    	    	    	
+
     	model.addAttribute( "isbn", isbn13 );
-    	
+
     	final Optional<Double> preisOptional = _preisAbfrageClient.holePreis( isbn13 );
-    	preisOptional.ifPresentOrElse( preisEuro -> model.addAttribute( "preis", preisEuro ), 
+    	preisOptional.ifPresentOrElse( preisEuro -> model.addAttribute( "preis", preisEuro ),
     			                       ()        -> model.addAttribute( "preis", -1.0      )
     			                     );
-    	    	
+
     	return "ergebnis";
     }
-	
+
 }
