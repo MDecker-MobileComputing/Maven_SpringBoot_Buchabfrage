@@ -1,0 +1,16 @@
+body {
+    font-family: sans-serif;
+    padding    : 1em;
+}
+
+h2 {
+    margin-top: 2em;
+}
+
+a {
+    margin-bottom: 1em;
+}
+
+li {
+    margin-bottom: 1.5em;
+}

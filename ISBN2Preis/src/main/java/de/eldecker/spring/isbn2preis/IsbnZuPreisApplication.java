@@ -13,7 +13,7 @@ public class IsbnZuPreisApplication {
 	/**
 	 * Einstiegsmethode der Anwendung.
 	 * 
-	 * @param args Kommandozeilenargumente, werde an Spring durchgereicht
+	 * @param args Kommandozeilenargumente, werden an Spring durchgereicht
 	 */
 	public static void main( String[] args ) {
 		
