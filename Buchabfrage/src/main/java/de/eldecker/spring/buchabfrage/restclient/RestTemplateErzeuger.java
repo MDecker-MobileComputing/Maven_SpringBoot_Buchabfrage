@@ -18,6 +18,10 @@ public class RestTemplateErzeuger {
 	 * Objekt für REST-Abfrage (REST-Client), konfiguriert für client-seitiges Load Balancing.  
 	 * Siehe Einträge unter {@code spring.cloud.discovery.client.simple.instances} in Datei
 	 * {@code application.properties} für Liste der möglichen Clients.
+	 * <br><br>
+	 * 
+	 * Offizielle Doku zu {@code RestTemplate} mit dem Spring Load Balancer:
+	 * <a href="https://bit.ly/3Pmo2UV">siehe hier</a>
 	 * 
 	 * @return REST-Client-Objekt
 	 */
