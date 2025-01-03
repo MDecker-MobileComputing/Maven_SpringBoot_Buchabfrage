@@ -3,7 +3,9 @@
 <br>
 
 Diese Repository enthält zwei Maven-Projekte für Spring-Boot-Anwendung:
+
 * ISBN2Preis: REST-API zur Abfrage von Buchpreisen anhand der [ISBN13](https://de.wikipedia.org/wiki/Internationale_Standardbuchnummer#ISBN-13).
+
 * BuchAbfrage: Dieser Dienst implementiert client-seitiges Load Balancing,
   um eine der beiden Instanzen von ISBN2Preis abzufragen.
 
