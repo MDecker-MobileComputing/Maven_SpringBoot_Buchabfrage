@@ -39,26 +39,26 @@ public class ThymeleafController {
 	 * </pre>
 	 *
 	 * @param isbn13 ISBN von Buch, für die Details abgefragt
-	 *               werden sollen.
+	 *               werden sollen; als {@code long}-Variable,
+	 *               damit keine Bindestriche enthalten sein 
+	 *               können.
 	 *
 	 * @param model Objekt für Platzhalterwerte in Template-Datei
 	 *
 	 * @return Name der Template-Datei, die für Anzeige verwendet
 	 *         werden soll (ohne Datei-Endung)
 	 */         	
-    @GetMapping("/buch/{isbn13}")
-    public String buchanfrage( @PathVariable String isbn13,
+    @GetMapping( "/buch/{isbn13}" )
+    public String buchanfrage( @PathVariable long isbn13,
                                Model model ) {
-    	
-    	isbn13 = isbn13.trim().replace( "-", "" );
-    	
+    	    	
     	LOG.info( "Anfrage für Buch mit ISBN13={} erhalten.", isbn13 );
     	    	    	
     	model.addAttribute( "isbn", isbn13 );
     	
     	final Optional<Double> preisOptional = _preisAbfrageClient.holePreis( isbn13 );
     	preisOptional.ifPresentOrElse( preisEuro -> model.addAttribute( "preis", preisEuro ), 
-    			                       ()        -> model.addAttribute( "preis", "???"     )
+    			                       ()        -> model.addAttribute( "preis", -1.0      )
     			                     );
     	
     	
