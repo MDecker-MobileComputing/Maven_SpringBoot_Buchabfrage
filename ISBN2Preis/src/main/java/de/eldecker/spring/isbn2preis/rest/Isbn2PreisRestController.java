@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * RestController-Klasse mit REST-Endpunkt für Abfrage von Preis
@@ -21,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping( "/api/v1" )
 public class Isbn2PreisRestController {
+	
+	private static Logger LOG = LoggerFactory.getLogger( Isbn2PreisRestController.class );
 	
 	/**
 	 * Regexp-Muster um ISBN13 auf Gültigkeit zu überprüfen: sie muss (nach
@@ -41,7 +46,7 @@ public class Isbn2PreisRestController {
 	 * </pre>
 	 * 
 	 * @param isbn13 ISBN13 für das Buch, dessen Preis abgefragt werden soll.
-	 *               Beispiel: {@code 978-3446481220 }
+	 *               Beispiel: {@code 978-3446481220}
 	 * 
 	 * @return Preis in Euro; wird aus Hash-Code der von Bindestrichen 
 	 *         bereinigen ISBN13 berechnet. Wenn keine gültige ISBN13 
@@ -61,6 +66,8 @@ public class Isbn2PreisRestController {
 		
 		final int    preisInEuroCent = Math.abs( isbn13.hashCode() % 10_000 );
 		final double preisInEuro     = preisInEuroCent / 100.0;
+		
+		LOG.info( "Antwort für ISBN13={}: {} Euro", isbn13, preisInEuro );
 		
 		return ResponseEntity.status( OK ).body( preisInEuro );
 	}
