@@ -1,5 +1,7 @@
 package de.eldecker.spring.buchabfrage.restclient;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,8 +14,10 @@ import org.springframework.web.client.RestTemplate;
  * {@code Bean} annotiert sind).
  */
 @Configuration
-public class RestTemplateErzeuger {
+public class LoadBalancerKonfig {
 
+	private static Logger LOG = LoggerFactory.getLogger( LoadBalancerKonfig.class );
+	
 	/**
 	 * Objekt für REST-Abfrage (REST-Client), konfiguriert für client-seitiges Load Balancing.  
 	 * Siehe Einträge unter {@code spring.cloud.discovery.client.simple.instances} in Datei
@@ -29,6 +33,8 @@ public class RestTemplateErzeuger {
     @LoadBalanced
     public RestTemplate restTemplateMitLoadBalancing() {
     	    	
+    	LOG.info( "Neue Instanz von RestTemplate mit Load Balancing erzeugt" );
+    	
         return new RestTemplate();
     }
 
