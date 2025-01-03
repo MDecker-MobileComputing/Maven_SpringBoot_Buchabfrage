@@ -1,4 +1,4 @@
-package de.eldecker.spring.buchabfrage.logik;
+package de.eldecker.spring.buchabfrage.restclient;
 
 import java.util.Optional;
 

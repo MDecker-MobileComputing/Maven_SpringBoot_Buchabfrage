@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import de.eldecker.spring.buchabfrage.logik.PreisAbfrageClient;
+import de.eldecker.spring.buchabfrage.restclient.PreisAbfrageClient;
 
 
 /**
@@ -60,8 +60,7 @@ public class ThymeleafController {
     	preisOptional.ifPresentOrElse( preisEuro -> model.addAttribute( "preis", preisEuro ), 
     			                       ()        -> model.addAttribute( "preis", -1.0      )
     			                     );
-    	
-    	
+    	    	
     	return "ergebnis";
     }
 	
