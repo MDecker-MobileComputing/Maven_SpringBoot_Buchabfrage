@@ -4,11 +4,11 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -46,7 +46,7 @@ public class PreisAbfrageClient {
         try {
 
         	final ResponseEntity<Double> responseEntity =
-        			_restTemplate.getForEntity( url, Double.class );
+        									_restTemplate.getForEntity( url, Double.class );
 
             final HttpStatusCode statusCode = responseEntity.getStatusCode();
             if ( statusCode.is2xxSuccessful() ) {

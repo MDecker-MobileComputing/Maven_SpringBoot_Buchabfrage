@@ -1,15 +1,8 @@
 package de.eldecker.spring.buchabfrage.restclient;
 
-import static java.util.Collections.singletonList;
-
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -30,15 +23,9 @@ public class RestTemplateErzeuger {
 	 */
     @Bean
     @LoadBalanced
-    public RestTemplate restTemplateMitLoadBalancing( LoadBalancerClient loadBalancerClient ) {
-    	
-    	final RestTemplate restTemplate = new RestTemplate();
-    	
-    	final LoggingLoadBalancerInterceptor interceptor = new LoggingLoadBalancerInterceptor( loadBalancerClient );     	
-    	final List<ClientHttpRequestInterceptor> interceptorListe = singletonList( interceptor );    	
-    	restTemplate.setInterceptors( interceptorListe );
-    	
-        return restTemplate;
+    public RestTemplate restTemplateMitLoadBalancing() {
+    	    	
+        return new RestTemplate();
     }
 
 }
