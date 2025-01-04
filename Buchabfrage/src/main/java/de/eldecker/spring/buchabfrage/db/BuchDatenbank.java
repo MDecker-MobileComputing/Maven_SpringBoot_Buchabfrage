@@ -70,7 +70,7 @@ public class BuchDatenbank {
      */
     private String getVorname( long isbn13 ) {
         
-        long isbn13Quadrat = Math.abs( isbn13 * isbn13 ); // Absolut um negativen ISBNs bei Überlauf von Wertebereich long zu vermeiden
+        long isbn13Quadrat = Math.abs( isbn13 * isbn13 ); // Betragsfunktion um negativen ISBNs bei Überlauf von Wertebereich long zu vermeiden
         final int index = (int) ( isbn13Quadrat % ARRAY_VORNAMEN.length );
         return ARRAY_VORNAMEN[ index ];
     }
