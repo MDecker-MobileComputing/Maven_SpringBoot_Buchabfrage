@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import de.eldecker.spring.buchabfrage.db.BuchDatenbank;
+import de.eldecker.spring.buchabfrage.db.BuchRecord;
 import de.eldecker.spring.buchabfrage.restclient.PreisAbfrageClient;
 
 
@@ -27,6 +29,9 @@ public class ThymeleafController {
 	 */
 	@Autowired
 	private PreisAbfrageClient _preisAbfrageClient;
+	
+	@Autowired
+	private BuchDatenbank _buchDatenbank;
 
 
 	/**
@@ -63,11 +68,14 @@ public class ThymeleafController {
         }
 
         
+        final BuchRecord buchRecord = _buchDatenbank.getBuch( isbn13 );
+        model.addAttribute( "autor", buchRecord.autor() );
+        model.addAttribute( "titel", buchRecord.titel() );
+        
     	final Optional<Double> preisOptional = _preisAbfrageClient.holePreis( isbn13 );
     	preisOptional.ifPresentOrElse( preisEuro -> model.addAttribute( "preis", preisEuro ),
     			                       ()        -> model.addAttribute( "preis", -1.0      )
     			                     );
-
     	return "ergebnis";
     }
 
