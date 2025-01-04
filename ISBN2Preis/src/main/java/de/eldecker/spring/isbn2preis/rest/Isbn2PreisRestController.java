@@ -64,7 +64,8 @@ public class Isbn2PreisRestController {
 			return ResponseEntity.status( BAD_REQUEST ).body( NEGATIVE_INFINITY );
 		}
 		
-		final int    preisInEuroCent = Math.abs( isbn13.hashCode() % 10_000 );
+		final int    hashCodeQuadrat = Math.abs( isbn13.hashCode() * isbn13.hashCode() );
+		final int    preisInEuroCent = hashCodeQuadrat % 10_000;
 		final double preisInEuro     = preisInEuroCent / 100.0;
 		
 		LOG.info( "Antwort für ISBN13={}: {} Euro", isbn13, preisInEuro );
