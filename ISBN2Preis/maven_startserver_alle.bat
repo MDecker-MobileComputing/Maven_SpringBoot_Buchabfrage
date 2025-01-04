@@ -1,4 +1,6 @@
 
+@REM wartet 5 Sekunden zwischen Start von zwei Instanzen
+
 @echo.
 
 start "ISBN2Preis (1) auf Port 8010" cmd /c "maven_startserver_8010.bat"
