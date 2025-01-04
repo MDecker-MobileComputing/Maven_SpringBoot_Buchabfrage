@@ -53,9 +53,16 @@ public class ThymeleafController {
                                Model model ) {
 
     	LOG.info( "Anfrage für Buch mit ISBN13={} erhalten.", isbn13 );
-
     	model.addAttribute( "isbn", isbn13 );
+    	
+    	final int laenge = Long.toString( isbn13 ).length();
+        if ( laenge != 13 ) {
+            
+            LOG.warn( "Ungültige ISBN13-Länge: {}.", laenge );
+            return "fehler";
+        }
 
+        
     	final Optional<Double> preisOptional = _preisAbfrageClient.holePreis( isbn13 );
     	preisOptional.ifPresentOrElse( preisEuro -> model.addAttribute( "preis", preisEuro ),
     			                       ()        -> model.addAttribute( "preis", -1.0      )
