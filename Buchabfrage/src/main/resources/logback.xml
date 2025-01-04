@@ -18,6 +18,7 @@
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
         </encoder>
+		<filter class="de.eldecker.spring.buchabfrage.restclient.LogFileFilter" />
     </appender>
 
     <root level="info">
