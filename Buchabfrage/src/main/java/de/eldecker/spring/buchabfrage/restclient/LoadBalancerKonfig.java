@@ -18,6 +18,7 @@ public class LoadBalancerKonfig {
 
 	private static Logger LOG = LoggerFactory.getLogger( LoadBalancerKonfig.class );
 	
+
 	/**
 	 * Objekt für REST-Abfrage (REST-Client), konfiguriert für client-seitiges Load Balancing.  
 	 * Siehe Einträge unter {@code spring.cloud.discovery.client.simple.instances} in Datei
