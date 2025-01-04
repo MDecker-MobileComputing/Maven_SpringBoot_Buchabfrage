@@ -12,17 +12,24 @@ import org.springframework.web.client.RestTemplate;
  * Diese Klasse ist mit {@code Configuration} annotiert und enthält
  * deshalb Bean-Erzeuger-Methoden (welche selbst wieder mit
  * {@code Bean} annotiert sind).
+ * <br><br>
+ * 
+ * Siehe auch Konfigurationen in {@code application.properties}:
+ * <ul>
+ * <li>Mögliche Clients:  {@code spring.cloud.discovery.client.simple.instances}</li>
+ * <li>Log-Output für Anzeige verwendeter Client für eine Abfrage:
+ *     {logging.level.org.springframework.cloud=DEBUG}</li>
+ * <li>Für Retry: {@code spring.cloud.loadbalancer.retry.*}</li>
+ * </ul>
  */
 @Configuration
-public class LoadBalancerKonfig {
+public class LoadBalancerKonfiguration {
 
-	private static Logger LOG = LoggerFactory.getLogger( LoadBalancerKonfig.class );
+	private static Logger LOG = LoggerFactory.getLogger( LoadBalancerKonfiguration.class );
 	
 
 	/**
 	 * Objekt für REST-Abfrage (REST-Client), konfiguriert für client-seitiges Load Balancing.  
-	 * Siehe Einträge unter {@code spring.cloud.discovery.client.simple.instances} in Datei
-	 * {@code application.properties} für Liste der möglichen Clients.
 	 * <br><br>
 	 * 
 	 * Offizielle Doku zu {@code RestTemplate} mit dem Spring Load Balancer:
