@@ -3,6 +3,7 @@ package de.eldecker.spring.buchabfrage.restclient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.loadbalancer.core.RandomLoadBalancer;
@@ -55,15 +56,20 @@ public class LoadBalancerKonfiguration {
 
     /**
      * Diese Methode sorgt dafür, dass statt dem standardmäßig verwendeten {@code RoundRobinLoadBalancer}
-     * der {@code RandomLoadBalancer} verwendet wird.
+     * der {@code RandomLoadBalancer} verwendet wird. Wird eingeschaltet, wenn in der Datei 
+     * {@code application.properties} der Wert {@code de.eldecker.buchabfrage.loadbalancer.random=true}
+     * gesetzt ist.
      * 
      * @param lbcFactory Factor für Load Balancer Clients
      * 
      * @return Load Balancer für Zufallsauswahl von Service-Instanzen
      */
     @Bean
+    @ConditionalOnProperty(name = "de.eldecker.buchabfrage.loadbalancer.random", havingValue = "true")
     public ReactorLoadBalancer<ServiceInstance> zufallsLoadBalancer( LoadBalancerClientFactory lbcFactory ) {
                                             
+        LOG.info( "Load-Balancer verwendet Zufallsauswahl von Service-Instanzen." );
+        
         final ObjectProvider<ServiceInstanceListSupplier> provider = 
                                lbcFactory.getLazyProvider( "isbn-abfrage", 
                                                            ServiceInstanceListSupplier.class );
