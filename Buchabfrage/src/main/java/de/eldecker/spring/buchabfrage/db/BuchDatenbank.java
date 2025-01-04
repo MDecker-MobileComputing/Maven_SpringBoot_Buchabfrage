@@ -56,7 +56,8 @@ public class BuchDatenbank {
      */
     private String getFachgebiet( long isbn13 ) {
 
-        final int index = (int) ( isbn13 % ARRAY_FACHGEBIET.length );
+        final long isbn13malSieben = Math.abs( isbn13 * 7 ); // multipliziert mit Primzahl
+        final int index = (int) ( isbn13malSieben % ARRAY_FACHGEBIET.length );
         return ARRAY_FACHGEBIET[ index ];
     }
 
@@ -70,8 +71,8 @@ public class BuchDatenbank {
      */
     private String getVorname( long isbn13 ) {
         
-     // Betragsfunktion um negativen ISBNs bei Überlauf von Wertebereich long zu vermeiden
-        long isbn13Quadrat = Math.abs( isbn13 * isbn13 ); 
+        // Betragsfunktion um negativen ISBNs bei Überlauf von Wertebereich long zu vermeiden
+        final long isbn13Quadrat = Math.abs( isbn13 * isbn13 ); 
         final int index = (int) ( isbn13Quadrat % ARRAY_VORNAMEN.length );
         return ARRAY_VORNAMEN[ index ];
     }
@@ -86,7 +87,8 @@ public class BuchDatenbank {
      */
     private String getNachname( long isbn13 ) {
 
-        final int index = (int) ( isbn13 % ARRAY_NACHNAME.length );
+        final long isbn13malDrei = Math.abs( isbn13 * 3 ); // multipliziert mit Primzahl
+        final int index = (int) ( isbn13malDrei % ARRAY_NACHNAME.length );
         return ARRAY_NACHNAME[ index ];
     }
     
