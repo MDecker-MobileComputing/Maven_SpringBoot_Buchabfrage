@@ -3,6 +3,7 @@ package de.eldecker.spring.buchabfrage.restclient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -13,6 +14,8 @@ import org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
+
+import jakarta.annotation.PostConstruct;
 
 
 /**
@@ -35,8 +38,12 @@ public class LoadBalancerKonfiguration {
 	private static Logger LOG = LoggerFactory.getLogger( LoadBalancerKonfiguration.class );
 	
 
+    @Value("${de.eldecker.buchabfrage.loadbalancer.random}")
+    private boolean _loadBalancerZufallsauswahl;
+
 	/**
-	 * Objekt für REST-Abfrage (REST-Client), konfiguriert für client-seitiges Load Balancing.  
+	 * Objekt für REST-Abfrage (REST-Client), konfiguriert für client-seitiges Load Balancing;
+     * siehe Annotation {@code LoadBalanced}.
 	 * <br><br>
 	 * 
 	 * Offizielle Doku zu {@code RestTemplate} mit dem Spring Load Balancer:
@@ -51,6 +58,28 @@ public class LoadBalancerKonfiguration {
     	LOG.info( "Neue Instanz von RestTemplate mit Load Balancing erzeugt." );
     	
         return new RestTemplate();
+    }
+    
+
+    /**
+     * Schreibt eine Log-Nachricht mit ausgewähltem Algorithmus.
+     * <br><br>
+     * 
+     * Diese Methode verwendet die Annotation {@code PostConstruct}, um
+     * sicherzustellen, dass das Property aus der Datei {@code application.properties}
+     * bereits gelesen wurde.
+     */
+    @PostConstruct
+    public void nachInitialisierung() {
+
+        if ( _loadBalancerZufallsauswahl ) {
+
+            LOG.info( "Verfahren für Load Balancer: Random" );
+
+        } else {
+            
+            LOG.info( "Verfahren für Load Balancer: Round Robin" );
+        }
     }
 
 
@@ -68,7 +97,6 @@ public class LoadBalancerKonfiguration {
     @ConditionalOnProperty(name = "de.eldecker.buchabfrage.loadbalancer.random", havingValue = "true")
     public ReactorLoadBalancer<ServiceInstance> zufallsLoadBalancer( LoadBalancerClientFactory lbcFactory ) {
                                             
-        LOG.info( "Load-Balancer verwendet Zufallsauswahl von Service-Instanzen." );
         
         final ObjectProvider<ServiceInstanceListSupplier> provider = 
                                lbcFactory.getLazyProvider( "isbn-abfrage", 
