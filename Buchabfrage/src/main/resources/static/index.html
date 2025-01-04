@@ -10,5 +10,17 @@
 
   <h1>Abfrage von Büchern anhand ISBN13</h1>
 
+  <h2>Gültige Beispielaufrufe:</h2>
+  <ul>
+    <li><a href="buch/9780201038040">ISB13=9780201038040</a></li>
+    <li><a href="buch/1234567890123">ISB13=1234567890123</a></li>
+  </ul>
+
+  <h2>Ungültige Beispielaufrufe:</h2>
+  <ul>
+    <li><a href="buch/123">ISB13=123 (zu kurz)</a></li>
+    <li><a href="buch/12345678901234">ISB13=12345678901234 (zu lang)</a></li>
+    <li><a href="buch/abc">ISB13=abc (keine Zahl)</a></li>
+  </ul>
 
 </body>

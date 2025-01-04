@@ -24,12 +24,11 @@ public class ThymeleafController {
 
 	private static Logger LOG = LoggerFactory.getLogger( ThymeleafController.class );
 
-	/**
-	 * Client um Buchpreis von REST-API mit Load Balancing abzufragen.
-	 */
+	/** Client um Buchpreis von REST-API mit Load Balancing abzufragen. */
 	@Autowired
 	private PreisAbfrageClient _preisAbfrageClient;
 	
+	/** Simulierte Buchdatenbank, gibt für jede {@code long}-Zahl ein Buch zurück. */
 	@Autowired
 	private BuchDatenbank _buchDatenbank;
 
@@ -60,6 +59,7 @@ public class ThymeleafController {
     	LOG.info( "Anfrage für Buch mit ISBN13={} erhalten.", isbn13 );
     	model.addAttribute( "isbn", isbn13 );
     	
+    	
     	final int laenge = Long.toString( isbn13 ).length();
         if ( laenge != 13 ) {
             
@@ -71,6 +71,7 @@ public class ThymeleafController {
         final BuchRecord buchRecord = _buchDatenbank.getBuch( isbn13 );
         model.addAttribute( "autor", buchRecord.autor() );
         model.addAttribute( "titel", buchRecord.titel() );
+        
         
     	final Optional<Double> preisOptional = _preisAbfrageClient.holePreis( isbn13 );
     	preisOptional.ifPresentOrElse( preisEuro -> model.addAttribute( "preis", preisEuro ),
