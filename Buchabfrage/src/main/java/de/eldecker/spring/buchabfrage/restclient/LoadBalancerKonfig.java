@@ -34,7 +34,7 @@ public class LoadBalancerKonfig {
     @LoadBalanced
     public RestTemplate restTemplateMitLoadBalancing() {
     	    	
-    	LOG.info( "Neue Instanz von RestTemplate mit Load Balancing erzeugt" );
+    	LOG.info( "Neue Instanz von RestTemplate mit Load Balancing erzeugt." );
     	
         return new RestTemplate();
     }
