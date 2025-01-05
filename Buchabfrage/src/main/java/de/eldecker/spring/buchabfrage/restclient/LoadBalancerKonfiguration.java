@@ -26,7 +26,7 @@ import jakarta.annotation.PostConstruct;
  *
  * Siehe auch Konfigurationen in {@code application.properties}:
  * <ul>
- * <li>Mögliche Clients:  {@code spring.cloud.discovery.client.simple.instances}</li>
+ * <li>Mögliche Clients: {@code spring.cloud.discovery.client.simple.instances}</li>
  * <li>Log-Output für Anzeige verwendeter Client für eine Abfrage:
  *     {logging.level.org.springframework.cloud=DEBUG}</li>
  * <li>Für Retry: {@code spring.cloud.loadbalancer.retry.*}</li>
