@@ -12,7 +12,7 @@
     <!-- Platzhalterwert für Dateiname erzeugen -->
     <timestamp key="startsekunde" datePattern="yyyy-MM-dd_HH.mm.ss"/>
 
-    <!-- Appender nur für Datei mit Lognachrichten nur vom Load-Balancer -->
+    <!-- Appender nur für Datei mit Log-Nachrichten vom Load-Balancer -->
     <appender name="LOAD_BALANCER_DATEI_LOG" class="ch.qos.logback.core.FileAppender">
         <file>LoadBalancer-${startsekunde}.log</file>       
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
