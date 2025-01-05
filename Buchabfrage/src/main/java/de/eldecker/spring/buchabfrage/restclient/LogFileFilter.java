@@ -14,10 +14,11 @@ import ch.qos.logback.core.spi.FilterReply;
  * <br><br>
  * 
  * Diese Klasse wird in der Datei {@code logback.xml} bei der Definition
- * des Appenders {@code LOAD_BALANCER_DATEI_LOG} im Element
- * {@code <filter>} verwendet.
+ * des Appenders {@code LOAD_BALANCER_DATEI_LOG} im Element {@code <filter>}
+ * verwendet.
  */
 public class LogFileFilter extends Filter<ILoggingEvent> {
+
 
     /**
      * Entscheidet, ob eine Log-Nachricht durchgelassen wird. Eine Log-Nachricht
@@ -35,6 +36,7 @@ public class LogFileFilter extends Filter<ILoggingEvent> {
             
             return ACCEPT;
         }
+
         return DENY;
     }
 
