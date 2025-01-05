@@ -22,8 +22,8 @@ public class PreisAbfrageClient {
 	private static Logger LOG = LoggerFactory.getLogger( PreisAbfrageClient.class );
 
 	/**
-	 * REST-Client-Objekt, konfiguriert für Load-Balancing mit Annotation
-	 * {@code LoadBalanced} in Klasse {@link Bohnenfabrik#restTemplateMitLoadBalancing()).
+	 * REST-Client-Objekt, konfiguriert für Load-Balancing mit Annotation {@code LoadBalanced} 
+	 * in Klasse {@link LoadBalancerKonfiguration#restTemplateMitLoadBalancing()}.
 	 */
 	@Autowired
 	private RestTemplate _restTemplate;
