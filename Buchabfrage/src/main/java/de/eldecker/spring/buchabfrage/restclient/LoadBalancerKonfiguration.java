@@ -37,9 +37,10 @@ public class LoadBalancerKonfiguration {
 
     private static Logger LOG = LoggerFactory.getLogger( LoadBalancerKonfiguration.class );
 
-
+    /** Konfigurationswert für LoadBalancer-Verfahren "Random" oder "Round Robin". */
     @Value("${de.eldecker.buchabfrage.loadbalancer.random}")
     private boolean _loadBalancerZufallsauswahl;
+
 
     /**
      * Objekt für REST-Abfrage (REST-Client), konfiguriert für client-seitiges Load Balancing;
