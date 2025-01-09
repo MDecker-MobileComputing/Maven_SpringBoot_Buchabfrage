@@ -2,7 +2,7 @@
 
 <br>
 
-Diese Repository enthält zwei Maven-Projekte für Spring-Boot-Anwendung:
+Diese Repository enthält zwei Maven-Projekte mit je einer Spring-Boot-Anwendung:
 
 * [ISBN2Preis](ISBN2Preis/): REST-API zur Abfrage von Buchpreisen anhand der [ISBN13](https://de.wikipedia.org/wiki/Internationale_Standardbuchnummer#ISBN-13).
 
@@ -19,9 +19,9 @@ Diese Repository enthält zwei Maven-Projekte für Spring-Boot-Anwendung:
 
 | Service     | Instanz-Nr | Port-Nummer                   |
 | ----------- | ---------- | ----------------------------- |
+| Buchabfrage | nur eine   | [8080](http://localhost:8080) |
 | ISBN2Preis  | 1          | [8010](http://localhost:8010) |
 | ISBN2Preis  | 2          | [8020](http://localhost:8020) |
-| Buchabfrage | nur eine   | [8080](http://localhost:8080) |
 
 <br>
 
