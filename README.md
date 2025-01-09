@@ -13,6 +13,16 @@ Diese Repository enthält zwei Maven-Projekte mit je einer Spring-Boot-Anwendung
 
 ---
 
+## Screenshot ##
+
+<br>
+
+![Screenshot 1](screenshot_1.png)
+
+<br>
+
+---
+
 ## Services und Port-Nummern ##
 
 <br>
