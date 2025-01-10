@@ -30,7 +30,7 @@ public class PreisAbfrageClient {
 
 
 	/**
-	 * Bei REST-API mit Load Balancing Preis für Buch abfragen
+	 * Bei REST-API mit <i>Load Balancing</i> den Preis für ein Buch abfragen.
 	 *
 	 * @param isbn13 ISBN13 des abzufragenden Buchs
 	 *
