@@ -61,6 +61,7 @@ public class PreisAbfrageClient {
 
             	LOG.error( "HTTP-GET-Request für Abfrage Buchpreis lieferte Fehlercode {} zurück.",
             			   statusCode );
+            	
             	return Optional.empty();
             }
         }
