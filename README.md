@@ -32,6 +32,7 @@ Diese Repository enthält zwei Maven-Projekte mit je einer Spring-Boot-Anwendung
 | Buchabfrage | nur eine   | [8080](http://localhost:8080) |
 | ISBN2Preis  | 1          | [8010](http://localhost:8010) |
 | ISBN2Preis  | 2          | [8020](http://localhost:8020) |
+| ISBN2Preis  | 3          | [8020](http://localhost:8030) |
 
 <br>
 
