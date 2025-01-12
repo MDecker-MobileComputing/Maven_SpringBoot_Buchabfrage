@@ -52,7 +52,7 @@ public class PreisAbfrageClient {
 
             	final Double preisEuro = responseEntity.getBody();
 
-            	LOG.info( "Preis für Buch mit ISBN13={} von REST-API erhalten: {}",
+            	LOG.info( "Preis von Buch mit ISBN13={} von REST-API erhalten: {}",
             			  isbn13, preisEuro );
 
             	return Optional.of( preisEuro );
@@ -67,7 +67,7 @@ public class PreisAbfrageClient {
         }
         catch ( RestClientException ex ) {
 
-        	LOG.error( "HTTP-GET-Request für Abfrage Buchpreis für ISBN13={} hat Ausnahme geworfen.",
+        	LOG.error( "HTTP-GET-Request für Abfrage Preis für ISBN13={} hat Ausnahme geworfen.",
         			   isbn13, ex );
         	return Optional.empty();
         }
