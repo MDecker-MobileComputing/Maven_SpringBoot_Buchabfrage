@@ -28,21 +28,21 @@
 
   <h2>Gültige Aufrufe:</h2>
   <ul>
-    <li><a href="api/v1/isbn2preis?isbn13=978-3836290494">Buch 1</a></li>
-    <li><a href="api/v1/isbn2preis?isbn13=978-0060833275">Buch 2</a></li>
-    <li><a href="api/v1/isbn2preis?isbn13=978-3836295444">Buch 3</a></li>
+    <li><a href="api/v1/isbn2preis?isbn13=9783836290494">Buch 1</a></li>
+    <li><a href="api/v1/isbn2preis?isbn13=9780060833275">Buch 2</a></li>
+    <li><a href="api/v1/isbn2preis?isbn13=9783836295444">Buch 3</a></li>
   </ul>
   <p>
-    Preise werden durch Verhashung des normierten
+    Die Preise werden durch Verhashung des normierten
     <a href="https://de.wikipedia.org/wiki/Internationale_Standardbuchnummer#ISBN-13">ISBN13</a>-Strings
     "bestimmt".
   </p>
 
   <h2>Unzulässige Aufrufe:</h2>
   <ul>
-    <li><a href="api/v1/isbn2preis?isbn13=978-383629049"   >ISBN13 zu kurz</a></li>
-    <li><a href="api/v1/isbn2preis?isbn13=978-38362904933" >ISBN13 zu lang</a></li>
-    <li><a href="api/v1/isbn2preis?isbn13=978-383629049a"  >ISBN13 enthält ungültiges Zeichen</a></li>
+    <li><a href="api/v1/isbn2preis?isbn13=978383629049"   >ISBN13 zu kurz</a></li>
+    <li><a href="api/v1/isbn2preis?isbn13=97838362904933" >ISBN13 zu lang</a></li>
+    <li><a href="api/v1/isbn2preis?isbn13=978383629049a"  >ISBN13 enthält ungültiges Zeichen</a></li>
   </ul>
   <p>
     Unzulässige Aufrufe liefern den HTTP-Status 400 (Bad Request) sowie "-Infinity"

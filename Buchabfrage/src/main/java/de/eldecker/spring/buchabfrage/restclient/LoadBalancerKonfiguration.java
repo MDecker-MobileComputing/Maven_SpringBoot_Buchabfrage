@@ -98,7 +98,6 @@ public class LoadBalancerKonfiguration {
     @ConditionalOnProperty(name = "de.eldecker.buchabfrage.loadbalancer.random", havingValue = "true")
     public ReactorLoadBalancer<ServiceInstance> zufallsLoadBalancer( LoadBalancerClientFactory lbcFactory ) {
 
-
         final ObjectProvider<ServiceInstanceListSupplier> provider =
                                lbcFactory.getLazyProvider( "isbn-abfrage",
                                                            ServiceInstanceListSupplier.class );

@@ -1,20 +1,16 @@
 package de.eldecker.spring.isbn2preis.rest;
 
 import static java.lang.Double.NEGATIVE_INFINITY;
-import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.OK;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 /**
@@ -26,12 +22,6 @@ import org.slf4j.LoggerFactory;
 public class Isbn2PreisRestController {
 	
 	private static Logger LOG = LoggerFactory.getLogger( Isbn2PreisRestController.class );
-	
-	/**
-	 * Regexp-Muster um ISBN13 auf Gültigkeit zu überprüfen: sie muss (nach
-	 * Entfernen evtl. vorhandener Bindestriche) auf genau 13 Ziffern bestehen.
-	 */
-	private static final Pattern ISBN13_REGEXP = Pattern.compile( "^\\d{13}$" );
 
 
 	/**
@@ -39,14 +29,13 @@ public class Isbn2PreisRestController {
 	 * ISBN13 abzufragen.
 	 * <br><br>
 	 * 
-	 * Beispiel-URL für lokale Aufrufe an Port 8010 bzw. 8020: 
+	 * Beispiel-URL für lokale Aufrufe an Port 8010: 
 	 * <pre>
-	 * http://localhost:8010/api/v1/isbn2preis?isbn13=978-3836290494
-	 * http://localhost:8020/api/v1/isbn2preis?isbn13=978-3836290494
+	 * http://localhost:8010/api/v1/isbn2preis?isbn13=9783836290494
 	 * </pre>
 	 * 
 	 * @param isbn13 ISBN13 für das Buch, dessen Preis abgefragt werden soll.
-	 *               Beispiel: {@code 978-3446481220}
+	 *               Beispiel: {@code 9783446481220}
 	 * 
 	 * @return Preis in Euro; wird aus Hash-Code der von Bindestrichen 
 	 *         bereinigen ISBN13 berechnet. Wenn keine gültige ISBN13 
@@ -54,16 +43,14 @@ public class Isbn2PreisRestController {
 	 *         einem Preis "unendlich negativ" zurückgegeben.
 	 */
 	@GetMapping( "/isbn2preis" )
-	public ResponseEntity<Double> getPreis( @RequestParam("isbn13") String isbn13 ) {
+	public ResponseEntity<Double> getPreis( @RequestParam("isbn13") Long isbn13 ) {
 		
-		isbn13 = isbn13.replace( "-", "" );
+		if ( isbn13.toString().length() != 13 ) {
 		
-		final Matcher matcher = ISBN13_REGEXP.matcher( isbn13 );
-		if ( matcher.matches() == false ) {
-			
+			LOG.error( "Aufruf mit ISBN={}, hat aber nicht genau 13 Stellen.", isbn13 );
 			return ResponseEntity.status( BAD_REQUEST ).body( NEGATIVE_INFINITY );
 		}
-		
+				
 		final int    hashCodeQuadrat = Math.abs( isbn13.hashCode() * isbn13.hashCode() );
 		final int    preisInEuroCent = hashCodeQuadrat % 10_000;
 		final double preisInEuro     = preisInEuroCent / 100.0;
