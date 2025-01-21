@@ -29,7 +29,7 @@ public class Isbn2PreisRestController {
 	 * ISBN13 abzufragen.
 	 * <br><br>
 	 * 
-	 * Beispiel-URL für lokale Aufrufe an Port 8010: 
+	 * Beispiel-URL für lokalen Aufruf an Port 8010 (Instanz 1): 
 	 * <pre>
 	 * http://localhost:8010/api/v1/isbn2preis?isbn13=9783836290494
 	 * </pre>
@@ -38,9 +38,9 @@ public class Isbn2PreisRestController {
 	 *               Beispiel: {@code 9783446481220}
 	 * 
 	 * @return Preis in Euro; wird aus Hash-Code der von Bindestrichen 
-	 *         bereinigen ISBN13 berechnet. Wenn keine gültige ISBN13 
-	 *         übergeben wurde, dann wird HTTP-Status-Code 400 mit
-	 *         einem Preis "unendlich negativ" zurückgegeben.
+	 *         bereinigen ISBN13 berechnet. Wenn eine Zahl übergeben wird,
+	 *         die nicht genau 13 Stellen hat, dann wird {@code -1}
+	 *         zurückgegeben.
 	 */
 	@GetMapping( "/isbn2preis" )
 	public ResponseEntity<Double> getPreis( @RequestParam("isbn13") Long isbn13 ) {
