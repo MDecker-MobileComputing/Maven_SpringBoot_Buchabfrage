@@ -43,9 +43,10 @@ public class ThymeleafController {
 	 * </pre>
 	 *
 	 * @param isbn13 ISBN von Buch, für die Details abgefragt
-	 *               werden sollen; als {@code long}-Variable,
+	 *               werden sollen; als {@code Long}-Variable,
 	 *               damit keine Bindestriche enthalten sein
-	 *               können.
+	 *               können; muss genau 13 Ziffern haben (keine
+	 *               führenden Nullen)
 	 *
 	 * @param model Objekt für Platzhalterwerte in Template-Datei
 	 *
@@ -53,13 +54,13 @@ public class ThymeleafController {
 	 *         werden soll (ohne Datei-Endung)
 	 */
     @GetMapping( "/buch/{isbn13}" )
-    public String buchanfrage( @PathVariable long isbn13,
+    public String buchanfrage( @PathVariable Long isbn13,
                                Model model ) {
 
     	LOG.info( "Anfrage für Buch mit ISBN13={} erhalten.", isbn13 );
     	model.addAttribute( "isbn", isbn13 );
 
-    	final int laenge = Long.toString( isbn13 ).length();
+    	final int laenge = isbn13.toString().length();
         if ( laenge != 13 ) {
 
             LOG.warn( "Ungültige ISBN13-Länge: {}.", laenge );
