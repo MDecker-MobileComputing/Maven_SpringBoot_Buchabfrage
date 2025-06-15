@@ -13,6 +13,7 @@ für Einrichten von Senden von Log-Nachrichten von Spring-Boot-Anwendung an Logs
 
 <br>
 
+
 ----
 
 ## Kibana: Abfrage mit KQL ## 

@@ -7,31 +7,35 @@ import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-
 /**
- * Konfiguration für Log-Nachrichten, die zu ELK-Stack
- * (genauer: Logstash) geschickt werden.
+ * Konfiguration für Log-Nachrichten, die zu ELK-Stack (genauer: Logstash)
+ * geschickt werden.
  */
 @Component
 public class LoggingKonfig {
 
-	private static Logger LOG = LoggerFactory.getLogger( LoggingKonfig.class );
+    private static Logger LOG = LoggerFactory.getLogger(LoggingKonfig.class);
 
-	
-	/**
-	 * Eigenes Feld im "Mapped Diagnostic Context (MDC)" mit "Instanz-Name"
-	 * in Logback setzen. Der Wert endet auf die Portnummer des HTTP-Servers.
-	 * Beispielwert: "ISBN13Preis-8010".  
-	 */
+    /**
+     * Eigenes Feld im "Mapped Diagnostic Context (MDC)" mit "Instanz-Name" in
+     * Logback setzen. Der Wert endet auf die Portnummer des HTTP-Servers.
+     * Beispielwert: "ISBN13Preis-8010".
+     * <br><br>
+     * 
+     * Zugehöriger Eintrag in Datei {@code logback.xml}:
+     * <pre>
+     * <includeMdcKeyName>Instanzname</includeMdcKeyName>
+     * </pre>
+     */
     @EventListener
-    public void onWebServerReady( WebServerInitializedEvent event ) {
-    	
+    public void onWebServerReady(WebServerInitializedEvent event) {
+
         final int portNummer = event.getWebServer().getPort();
-        final String instanzName = "ISBN13Preis-" + portNummer; 
+        final String instanzName = "ISBN13Preis-" + portNummer;
         MDC.put( "Instanzname", instanzName );
-        
+
         LOG.info( "Instanz-Name in Logging-Kontext gesetzt: \"{}\"", 
-        		  instanzName ); 
+                  instanzName );
     }
 
 }

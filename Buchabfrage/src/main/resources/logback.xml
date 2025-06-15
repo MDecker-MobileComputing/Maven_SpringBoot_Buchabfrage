@@ -36,22 +36,11 @@
 
         <!--
             https://betterstack.com/community/questions/send-spring-boot-logs-directly-to-logstash-with-no-file/
+            https://github.com/logfellow/logstash-logback-encoder
         -->
         <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
             <destination>localhost:5044</destination>
-            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-                <providers>
-                    <timestamp />
-                    <logger />
-                    <thread />
-                    <level />
-                    <message />
-                    <logstashMarkers />
-                    <arguments />
-                    <mdc /><!-- Mapped Diagnostic Context -->
-                    <context />
-                </providers>
-            </encoder>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
         </appender>
 
         <!-- Optional: Add a console appender for local debugging -->
