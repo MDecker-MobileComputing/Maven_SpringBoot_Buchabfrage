@@ -22,13 +22,10 @@ public class LoggingKonfig {
      * Beispielwert: "ISBN13Preis-8010".
      * <br><br>
      * 
-     * Zugehöriger Eintrag in Datei {@code logback.xml}:
-     * <pre>
-     * <includeMdcKeyName>Instanzname</includeMdcKeyName>
-     * </pre>
+     * Zugehöriger Eintrag unter Key "includeMdcKeyName" in Datei {@code logback.xml}
      */
     @EventListener
-    public void onWebServerReady(WebServerInitializedEvent event) {
+    public void onWebServerReady( WebServerInitializedEvent event ) {
 
         final int portNummer = event.getWebServer().getPort();
         final String instanzName = "ISBN13Preis-" + portNummer;
