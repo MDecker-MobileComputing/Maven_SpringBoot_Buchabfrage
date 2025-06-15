@@ -1,0 +1,25 @@
+<configuration>
+
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <remoteHost>localhost</remoteHost> <!-- Logstash host -->
+        <port>5044</port>                  <!-- Logstash port -->
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp />
+                <logger />
+                <thread />
+                <level />
+                <message />
+                <logstashMarkers />
+                <arguments />
+                <MDC />
+                <context />
+            </providers>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="LOGSTASH" />
+    </root>
+
+</configuration>
