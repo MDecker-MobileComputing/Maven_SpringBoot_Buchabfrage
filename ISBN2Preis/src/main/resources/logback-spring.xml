@@ -22,7 +22,19 @@
 
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>localhost:5044</destination>
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <providers>
+                <timestamp />
+                <logger />
+                <thread />
+                <level />
+                <message />
+                <logstashMarkers />
+                <arguments />
+                <mdc />
+                <context />
+            </providers>
+        </encoder>
     </appender>
 
     <!-- Optional: Add a console appender for local debugging -->
