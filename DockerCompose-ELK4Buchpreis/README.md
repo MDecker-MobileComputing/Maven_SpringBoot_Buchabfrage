@@ -19,8 +19,18 @@ für Einrichten von Senden von Log-Nachrichten von Spring-Boot-Anwendung an Logs
 
 <br>
 
-Nur Log-Nachrichten von Buchabfrage-Frontend anzeigen: `logger_name:de.eldecker.spring.buchabfrage*`
+Alle Log-Nachrichten ...
 
-Nur Log-Nachrichten von ISBN2Preis-Anwendung: `logger_name:de.eldecker.spring.isbn2preis*`
+* von Buchabfrage-Frontend anzeigen: `logger_name:de.eldecker.spring.buchabfrage*`
+
+* von ISBN2Preis-Anwendung: `logger_name:de.eldecker.spring.isbn2preis*`
+
+* mit Log-Level `ERROR` oder `WARN`: `level:WARN OR level:ERROR`
+
+* mit Teilstring "8030" in Feld `Instanzname`: `Instanzname : "*8030*"`
+
+<br>
+
+Weitere Infos von KQL siehe [hier](https://www.elastic.co/docs/explore-analyze/query-filter/languages/kql).
 
 <br>
