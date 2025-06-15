@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project 
-    xmlns="http://maven.apache.org/POM/4.0.0" 
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    
+
     <groupId>de.eldecker.spring</groupId>
     <artifactId>isbn2preis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    
+
     <name>ISBN13-zu-Preis</name>
     <description>REST-API zur Preisabfrage von Büchern anhand ISBN-13</description>
-    
+
     <properties>
         <java.version>23</java.version>
     </properties>
-    
+
     <licenses>
       <license>
         <name>BSD 3-Clause License</name>
         <url>https://opensource.org/license/BSD-3-clause/</url>
       </license>
     </licenses>
-    
+
     <dependencies>
-    
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -49,16 +49,14 @@
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-logging</artifactId>
-	    </dependency>	
-	    <!-- Logback Encoder for JSON output (optional, for structured logging) -->	    
-	    <!--
+	    </dependency>
+	    <!-- Logback Encoder for JSON output (optional, for structured logging) -->
 	    <dependency>
 	        <groupId>net.logstash.logback</groupId>
 	        <artifactId>logstash-logback-encoder</artifactId>
 	        <version>7.2</version>
 	    </dependency>
-	    -->
-	            
+
     </dependencies>
 
     <build>

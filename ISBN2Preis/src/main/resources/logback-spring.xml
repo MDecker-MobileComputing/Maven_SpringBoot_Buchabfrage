@@ -1,8 +1,9 @@
 <configuration>
 
+    <!--
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <remoteHost>localhost</remoteHost> <!-- Logstash host -->
-        <port>5044</port>                  <!-- Logstash port -->
+        <remoteHost>localhost</remoteHost>
+        <port>5044</port>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <timestamp />
@@ -12,14 +13,28 @@
                 <message />
                 <logstashMarkers />
                 <arguments />
-                <MDC />
+                <mdc />
                 <context />
             </providers>
+        </encoder>
+    </appender>
+    -->
+
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>localhost:5044</destination>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <!-- Optional: Add a console appender for local debugging -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
     <root level="INFO">
         <appender-ref ref="LOGSTASH" />
+        <appender-ref ref="CONSOLE" />
     </root>
 
 </configuration>
