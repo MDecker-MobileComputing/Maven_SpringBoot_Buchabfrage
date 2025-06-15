@@ -1,25 +1,8 @@
 <configuration>
 
     <!--
-    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <remoteHost>localhost</remoteHost>
-        <port>5044</port>
-        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <providers>
-                <timestamp />
-                <logger />
-                <thread />
-                <level />
-                <message />
-                <logstashMarkers />
-                <arguments />
-                <mdc />
-                <context />
-            </providers>
-        </encoder>
-    </appender>
+        https://betterstack.com/community/questions/send-spring-boot-logs-directly-to-logstash-with-no-file/
     -->
-
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>localhost:5044</destination>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">

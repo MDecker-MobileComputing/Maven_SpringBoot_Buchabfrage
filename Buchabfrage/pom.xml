@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project 
-    xmlns="http://maven.apache.org/POM/4.0.0" 
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    
+
     <groupId>de.eldecker.spring</groupId>
     <artifactId>buchabfrage</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    
+
     <name>Buchabfrage</name>
     <description>Buchabfrage anhand ISBN13</description>
-    
+
     <licenses>
       <license>
         <name>BSD 3-Clause License</name>
         <url>https://opensource.org/license/BSD-3-clause/</url>
       </license>
-    </licenses>    
-    
+    </licenses>
+
     <properties>
         <java.version>23</java.version>
         <spring-cloud.version>2024.0.0</spring-cloud.version>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,7 +60,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-    
+
+		<!-- https://betterstack.com/community/questions/send-spring-boot-logs-directly-to-logstash-with-no-file/
+		     siehe auch Konfiguration in: src/main/resources/logback-spring.xml -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-logging</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>net.logstash.logback</groupId>
+	        <artifactId>logstash-logback-encoder</artifactId>
+	        <version>7.2</version>
+	    </dependency>
+
     </dependencies>
 
     <dependencyManagement>

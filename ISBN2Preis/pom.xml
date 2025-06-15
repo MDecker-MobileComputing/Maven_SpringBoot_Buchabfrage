@@ -44,13 +44,12 @@
             <scope>test</scope>
         </dependency>
 
-		<!-- https://betterstack.com/community/questions/send-spring-boot-logs-directly-to-logstash-with-no-file/ -->
-		<!-- siehe src/main/resources/logback-spring.xml -->
+		<!-- https://betterstack.com/community/questions/send-spring-boot-logs-directly-to-logstash-with-no-file/
+		     siehe auch Konfiguration in: src/main/resources/logback-spring.xml -->
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-logging</artifactId>
 	    </dependency>
-	    <!-- Logback Encoder for JSON output (optional, for structured logging) -->
 	    <dependency>
 	        <groupId>net.logstash.logback</groupId>
 	        <artifactId>logstash-logback-encoder</artifactId>
