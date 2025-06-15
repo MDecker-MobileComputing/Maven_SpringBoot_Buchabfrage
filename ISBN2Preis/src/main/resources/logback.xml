@@ -31,7 +31,7 @@
                 <message />
                 <logstashMarkers />
                 <arguments />
-                <mdc />
+                <mdc /><!-- Mapped Diagnostic Context -->
                 <context />
             </providers>
         </encoder>
