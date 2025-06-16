@@ -8,8 +8,8 @@ jobs:
     strategy:
       matrix:
         microservice_name:
-        - Buchabfrage
-        - ISBN2Preis
+        - MS1_Buchabfrage
+        - MS2_ISBN2Preis
     steps:
     - name: Git-Repo auschecken
       uses: actions/checkout@v4
