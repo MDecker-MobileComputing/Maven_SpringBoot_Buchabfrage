@@ -19,7 +19,7 @@ public class LoggingKonfig {
     /**
      * Eigenes Feld im "Mapped Diagnostic Context (MDC)" mit "Instanz-Name" in
      * Logback setzen. Der Wert endet auf die Portnummer des HTTP-Servers.
-     * Beispielwert: "ISBN13Preis-8010".
+     * Beispielwert für Instanz 1, die auf Port 8010 läuft: "ISBN13Preis-8010".
      * <br><br>
      * 
      * Zugehöriger Eintrag unter Key "includeMdcKeyName" in Datei {@code logback.xml}
