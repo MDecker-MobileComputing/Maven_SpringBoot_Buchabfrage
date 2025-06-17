@@ -22,7 +22,8 @@ public class LoggingKonfig {
      * Beispielwert für Instanz 1, die auf Port 8010 läuft: "ISBN13Preis-8010".
      * <br><br>
      * 
-     * Zugehöriger Eintrag unter Key "includeMdcKeyName" in Datei {@code logback.xml}
+     * Siehe auch Konfiguration unter Key "includeMdcKeyName" in Datei  
+     * {@code logback.xml} in Ordner {@code src/main/resources}. 
      */
     @EventListener
     public void onWebServerReady( WebServerInitializedEvent event ) {
