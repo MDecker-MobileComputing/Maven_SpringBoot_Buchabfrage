@@ -16,6 +16,7 @@ public class LoggingKonfig {
 
     private static Logger LOG = LoggerFactory.getLogger(LoggingKonfig.class);
 
+    
     /**
      * Eigenes Feld im "Mapped Diagnostic Context (MDC)" mit "Instanz-Name" in
      * Logback setzen. Der Wert endet auf die Portnummer des HTTP-Servers.
