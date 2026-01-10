@@ -12,6 +12,13 @@ Diese Repository enthält zwei Maven-Projekte mit je einer Spring-Boot-Anwendung
 
 <br>
 
+**Log-Nachrichten auch an Logstash senden:**
+
+* MS1 mit Profil `ELK` starten
+* MS2: Datei `src\main\resources\logback.xml.bak` einkommentieren (also das `.bak` an Ende des Dateinamens entfernen)
+
+<br>
+
 ---
 
 ## Screenshot ##
