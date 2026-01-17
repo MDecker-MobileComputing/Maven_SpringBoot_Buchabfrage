@@ -23,11 +23,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingKonfig implements Filter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LoggingKonfig.class);
+    private static final Logger LOG = LoggerFactory.getLogger( LoggingKonfig.class );
 
     /** Wert für eigenes Log-Feld "Instanzname". */
     private String _instanzName = "ISBN13Preis-???";
 
+    
     /**
      * Instanzname bestimmen.
      */
@@ -51,8 +52,11 @@ public class LoggingKonfig implements Filter {
         
         MDC.put( "Instanzname", _instanzName );
         try {
+        	
             chain.doFilter( request, response );
+            
         } finally {
+        	
             MDC.remove( "Instanzname" ); // Cleanup nach Request
         }
     }
