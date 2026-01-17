@@ -29,7 +29,7 @@ public class LoggingKonfig {
     @EventListener
     public void onWebServerReady( WebServerInitializedEvent event ) {
 
-        final int portNummer = event.getWebServer().getPort();
+        final int    portNummer  = event.getWebServer().getPort();
         final String instanzName = "ISBN13Preis-" + portNummer;
         MDC.put( "Instanzname", instanzName );
 
