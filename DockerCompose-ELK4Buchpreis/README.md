@@ -28,7 +28,9 @@ Alle Log-Nachrichten ...
 
 * mit Log-Level `ERROR` oder `WARN`: `level:WARN OR level:ERROR`
 
-* mit Teilstring "8030" in Feld `Instanzname`: `Instanzname : "*8030*"`
+* mit Teilstring "8030" in MDC-Feld `Instanzname`: `Instanzname : "*8030*"`
+
+* mit exaktem Wert für Instanz auf Port 8030: `Instanzname : "ISBN13Preis-8030"`
 
 <br>
 
