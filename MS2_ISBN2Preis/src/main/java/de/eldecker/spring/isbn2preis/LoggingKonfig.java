@@ -25,33 +25,31 @@ public class LoggingKonfig implements Filter {
 
     private static final Logger LOG = LoggerFactory.getLogger(LoggingKonfig.class);
 
-    private String instanzName = "ISBN13Preis-unbekannt";
+    /** Wert für eigenes Log-Feld "Instanzname". */
+    private String _instanzName = "ISBN13Preis-???";
 
-    
     /**
-     * Instanz-Name aus Portnummer ermitteln und speichern.
-     * Beispielwert für Instanz auf Port 8030: "ISBN13Preis-8030".
+     * Instanzname bestimmen.
      */
     @EventListener
     public void onWebServerReady( WebServerInitializedEvent event ) {
 
         final int portNummer = event.getWebServer().getPort();
-        instanzName = "ISBN13Preis-" + portNummer;
+        _instanzName = "ISBN13Preis-" + portNummer;
 
-        LOG.info( "Instanz-Name für Logging ermittelt: \"{}\"", instanzName );
+        LOG.info( "Instanz-Name für Logging ermittelt: \"{}\"", _instanzName );
     }
 
-    
+
     /**
-     * MDC-Wert für jeden Request setzen, da MDC thread-lokal ist.
-     * Nach dem Request wird der Wert automatisch aus dem MDC entfernt.
+     * MDC-Feld mit Instanzname im Log-Context für jeden HTTP-Request setzen.
      */
     @Override
     public void doFilter( ServletRequest request, 
                           ServletResponse response, 
                           FilterChain chain ) throws IOException, ServletException {
         
-        MDC.put( "Instanzname", instanzName );
+        MDC.put( "Instanzname", _instanzName );
         try {
             chain.doFilter( request, response );
         } finally {

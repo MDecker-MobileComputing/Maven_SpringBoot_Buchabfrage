@@ -13,6 +13,9 @@ für Einrichten von Senden von Log-Nachrichten von Spring-Boot-Anwendung an Logs
 
 <br>
 
+Startseite von Kibana: http://localhost:5601/
+
+<br>
 
 ----
 
